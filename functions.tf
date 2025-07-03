@@ -66,3 +66,10 @@ resource "aws_iam_role_policy_attachment" "lambda_basic" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
   role       = aws_iam_role.lambda_role.name
 }
+
+resource "aws_lambda_permission" "bedrock_invoke" {
+  statement_id  = "AllowBedrockInvoke"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.newBankAccountStatus.function_name
+  principal     = "bedrock.amazonaws.com"
+}

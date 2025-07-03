@@ -3,6 +3,10 @@ import json
 import boto3
 client=boto3.client('dynamodb')
 
+import os
+
+tableName = os.environ['DYNAMODB_TABLE']
+
 """
 Here is a json to test the lambda in the AWS console
 {
@@ -26,7 +30,7 @@ def lambda_handler(event, context):
     account_id=event['parameters'][0]['value']
 #3 Create a request syntax to retrieve data from the DynamoDB Table using GET Item method - https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb/client/get_item.html
     response = client.get_item(
-        TableName='customerAccountStatus',
+        TableName=tableName,
         Key={'AccountID':{'N': account_id}})
 #4 Store and print the response 
     print(response)
