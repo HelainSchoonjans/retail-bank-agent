@@ -1,3 +1,4 @@
+# the database our agent uses through function calls
 
 resource "aws_dynamodb_table" "customer_account_status" {
   name           = "customerAccountStatus"
