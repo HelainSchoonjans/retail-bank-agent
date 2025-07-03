@@ -18,7 +18,7 @@ resource "aws_iam_role" "bedrock_agent_role" {
   })
 }
 
-# Basic policy for the agent role
+# Basic berock/logging policy for the agent role
 resource "aws_iam_role_policy" "bedrock_agent_policy" {
   name = "bedrock-agent-policy"
   role = aws_iam_role.bedrock_agent_role.id
@@ -59,7 +59,4 @@ resource "aws_bedrockagent_agent" "bank_agent" {
     If unsure about any request, ask for clarification.
   EOT
 
-  /*user_input_configuration {
-    is_enabled = true
-  }*/
 }
