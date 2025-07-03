@@ -39,6 +39,7 @@ resource "aws_iam_role" "lambda_role" {
   })
 }
 
+# lambda access to our dynamoDB database
 resource "aws_iam_role_policy" "lambda_dynamodb_policy" {
   name = "newBankAccountStatus_dynamodb_policy"
   role = aws_iam_role.lambda_role.id
@@ -67,9 +68,12 @@ resource "aws_iam_role_policy_attachment" "lambda_basic" {
   role       = aws_iam_role.lambda_role.name
 }
 
+# resource policy to ensure our function can be called by bedrock agents
 resource "aws_lambda_permission" "bedrock_invoke" {
   statement_id  = "AllowBedrockInvoke"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.newBankAccountStatus.function_name
   principal     = "bedrock.amazonaws.com"
+  # only the banking agent should access this function
+  source_arn    = aws_bedrockagent_agent.bank_agent.agent_arn
 }
