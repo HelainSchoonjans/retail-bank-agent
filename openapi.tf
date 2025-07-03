@@ -1,7 +1,7 @@
 # creates a bucket with the openapi description of our custom action
 
 resource "aws_s3_bucket" "accountstatusopenapi" {
-  bucket = "accountstatusopenapi"
+  bucket = "${local.env.sid}-accountstatusopenapi"
 }
 
 resource "aws_s3_bucket_public_access_block" "accountstatusopenapi" {
