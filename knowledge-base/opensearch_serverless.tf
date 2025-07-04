@@ -144,7 +144,7 @@ resource "opensearch_index" "this" {
     }
   })
   # can be destroyed and recreated on changes in terraform
-  #force_destroy = true
+  force_destroy = true
 
   depends_on = [aws_opensearchserverless_collection.collection]
 }
