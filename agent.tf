@@ -67,3 +67,11 @@ module "knowledge-base" {
    environment = local.env.environment
    region_name = local.env.region_name
 }
+
+# Associate knowledge base with agent
+resource "aws_bedrockagent_agent_knowledge_base_association" "agent_kb_association" {
+  agent_id          = aws_bedrockagent_agent.bank_agent.id
+  knowledge_base_id = module.knowledge-base.knowledge_base_id
+  knowledge_base_state = "ENABLED"
+  description      = "Use the knowledge base for any queries from the customer related to reason for this accountID status as pending"
+}

@@ -112,6 +112,10 @@ resource "opensearch_index" "this" {
 
   index_knn = true
 
+  lifecycle {
+    ignore_changes = [ mappings ]
+  }
+
   mappings = jsonencode({
     properties = {
       "${local.aoss.metadata_field}" = {
@@ -140,7 +144,7 @@ resource "opensearch_index" "this" {
     }
   })
   # can be destroyed and recreated on changes in terraform
-  force_destroy = true
+  #force_destroy = true
 
   depends_on = [aws_opensearchserverless_collection.collection]
 }
