@@ -60,3 +60,10 @@ resource "aws_bedrockagent_agent" "bank_agent" {
   EOT
 
 }
+
+module "knowledge-base" {
+   source = "./knowledge-base"
+   sid = local.env.sid
+   environment = local.env.environment
+   region_name = local.env.region_name
+}

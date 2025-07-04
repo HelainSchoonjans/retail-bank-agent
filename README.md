@@ -18,3 +18,13 @@ Follow the steps of PREREQUISITES.md.
 Go to the console and ask questions using the test window
 
 ![Test bot](diagrams/testBot.png)
+
+
+# Troubleshooting
+
+## elastic: Error 403 (Forbidden): User does not have permissions for the requested resource
+
+This error means that terraform tried to create some resources and permissions out of order. It should be fixed by adding the right 'depends_on' clause.
+
+In the meanwhile, run terraform apply a second time will succeed, as the permissions will have been created.
+
