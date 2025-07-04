@@ -19,6 +19,10 @@ Go to the console and ask questions using the test window
 
 ![Test bot](diagrams/testBot.png)
 
+It is able to give more information about the reason code and cite sources by using the knowledge base documents:
+
+![Bot answers using knowledge base](diagrams/testBotKnowledgeBase.png)
+
 
 # Troubleshooting
 
