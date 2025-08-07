@@ -8,6 +8,12 @@ A bedrock agent that can call lambda functions to fetch information from a dynam
 
 Follow the steps of PREREQUISITES.md.
 
+### AWS Access Keys setup
+
+Go to your AWS console in your browser, select the account then 'Access Keys'.
+
+Export the environment variables in your terminal or change your .aws/credentials file.
+
 ## Create the infrastructure
 
     terraform init
